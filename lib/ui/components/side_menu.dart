@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:retail_intel_v2/constants/constants.dart';
 import 'package:retail_intel_v2/ui/config/size_config.dart';
 import 'package:retail_intel_v2/ui/style/colors.dart';
 
@@ -10,7 +11,6 @@ class SideMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       elevation: 0,
-      width: 200,
       child: Container(
         width: double.infinity,
         height: SizeConfig.screenHeight,
@@ -37,8 +37,9 @@ class SideMenu extends StatelessWidget {
                 onPressed: () {},
                 icon: SvgPicture.asset(
                   'assets/icons/Message.svg',
-                  color: AppColors.iconGray,
+                  color: iconColor,
                 ),
+                tooltip: 'M E S S A G E S',
                 iconSize: 20,
                 padding: const EdgeInsets.symmetric(vertical: 20),
               ),
@@ -48,8 +49,8 @@ class SideMenu extends StatelessWidget {
                 child: IconButton(
                   onPressed: () {},
                   icon: SvgPicture.asset(
-                    'assets/icons/sales_1 .svg',
-                    color: AppColors.iconGray,
+                    'assets/icons/salary.svg',
+                    color: iconColor,
                   ),
                   tooltip: 'S A L E S',
                 ),

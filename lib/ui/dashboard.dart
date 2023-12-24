@@ -12,14 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// ignore_for_file: unnecessary_new
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:retail_intel_v2/ui/components/drawer_menu.dart';
+import 'package:retail_intel_v2/ui/components/appbar_action_items.dart';
+import 'package:retail_intel_v2/ui/components/header.dart';
+import 'package:retail_intel_v2/ui/components/info_card.dart';
+import 'package:retail_intel_v2/ui/components/payment_details_list.dart';
 import 'package:retail_intel_v2/ui/components/side_menu.dart';
 import 'package:retail_intel_v2/ui/config/size_config.dart';
 import 'package:retail_intel_v2/ui/style/colors.dart';
+import 'package:retail_intel_v2/ui/style/style.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -31,20 +32,96 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+
     return Scaffold(
       body: SafeArea(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
+            const Expanded(
               flex: 1,
               child: SideMenu(),
             ),
             Expanded(
               flex: 10,
-              child: SizedBox(
-                width: double.infinity,
-                height: SizeConfig.screenHeight,
+              child: SafeArea(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 30.0,
+                    horizontal: 30.0,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Header(),
+                      SizedBox(
+                        height: SizeConfig.screenHeight! / 14,
+                      ),
+                      SizedBox(
+                        width: SizeConfig.screenWidth,
+                        child: Wrap(
+                          runSpacing: 10.0,
+                          spacing: 10.0,
+                          alignment: WrapAlignment.spaceBetween,
+                          children: [
+                            InfoCard(
+                              icon: 'assets/icons/credit-card.svg',
+                              label: 'transfer via \n card number',
+                              amount: '\$1200',
+                              btn: TextButton(
+                                onPressed: () {},
+                                child: const PrimaryText(text: 'more details'),
+                              ),
+                            ),
+                            InfoCard(
+                              icon: 'assets/icons/transfer.svg',
+                              label: 'transfer via \n online banks',
+                              amount: '\$150',
+                              btn: TextButton(
+                                onPressed: () {},
+                                child: const PrimaryText(text: 'more details'),
+                              ),
+                            ),
+                            InfoCard(
+                              icon: 'assets/icons/bank.svg',
+                              label: 'transfer via \n card number',
+                              amount: '\$1300',
+                              btn: TextButton(
+                                onPressed: () {},
+                                child: const PrimaryText(text: 'more details'),
+                              ),
+                            ),
+                            InfoCard(
+                              icon: 'assets/icons/invoice.svg',
+                              label: 'transfer via \n card number',
+                              amount: '\$1100',
+                              btn: TextButton(
+                                onPressed: () {},
+                                child: const PrimaryText(text: ''),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: SizeConfig.blockSizeVertical! * 4,
+                      ),
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          PrimaryText(
+                            text: 'Balance',
+                            size: 16,
+                            fontWeight: FontWeight.w800,
+                            color: AppColors.secondary,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
             Expanded(
@@ -57,21 +134,13 @@ class _DashboardState extends State<Dashboard> {
                   vertical: 30.0,
                   horizontal: 30.0,
                 ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: SvgPicture.asset(
-                            'assets/icons/calendar.svg',
-                            width: 10.0,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                child: const SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      AppBarActionItems(),
+                      PaymentDetailsList(),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -51,6 +51,7 @@ dependencies:
   fl_chart: ^0.36.1
   provider: ^5.0.0
   data_table_2: ^2.0.3
+  clock: ^1.1.1
 
   
 dev_dependencies:
@@ -78,15 +79,29 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   # assets:
   assets:
-    - assets/icons/calendar.svg
-    - assets/icons/invoice.svg
-    - assets/icons/sales_1.svg
+    
 
     - assets/images/dhc_logo.png
-    
-    - assets/icons/Bell.svg
+    - assets/images/card.png
+
+
+    - assets/icons/calendar.svg
+    - assets/icons/invoice.svg
+    - assets/icons/ring.svg
+    - assets/icons/sales_1.svg
+    - assets/icons/drop.svg
+    - assets/icons/salary.svg
+    - assets/icons/electricity.svg
+    - assets/icons/wifi.svg
     - assets/icons/mac-action.svg
     - assets/icons/home.svg
+    - assets/icons/credit-card.svg
+    - assets/icons/transfer.svg
+    - assets/icons/bank.svg
+
+
+
+    - assets/icons/Bell.svg    
     - assets/icons/Subscribers.svg
     - assets/icons/Pages.svg
     - assets/icons/Post.svg
@@ -102,7 +117,6 @@ flutter:
     - assets/icons/Settings.svg
     - assets/icons/Logout.svg
     - assets/icons/inventory.svg
-    - assets/icons/sales.svg
 
   # 
 
