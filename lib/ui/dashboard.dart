@@ -15,10 +15,13 @@
 import 'package:flutter/material.dart';
 import 'package:retail_intel_v2/ui/components/appbar_action_items.dart';
 import 'package:retail_intel_v2/ui/components/bar_chart_component.dart';
+import 'package:retail_intel_v2/ui/components/drawer_menu.dart';
 import 'package:retail_intel_v2/ui/components/header.dart';
+import 'package:retail_intel_v2/ui/components/history_table.dart';
 import 'package:retail_intel_v2/ui/components/info_card.dart';
 import 'package:retail_intel_v2/ui/components/payment_details_list.dart';
-import 'package:retail_intel_v2/ui/components/side_menu.dart';
+
+import 'package:retail_intel_v2/ui/config/responsive.dart';
 import 'package:retail_intel_v2/ui/config/size_config.dart';
 import 'package:retail_intel_v2/ui/style/colors.dart';
 import 'package:retail_intel_v2/ui/style/style.dart';
@@ -32,18 +35,58 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   @override
+  void initState() {
+    super.initState();
+    _stateUpdate();
+  }
+
+  void _stateUpdate() {
+    setState() {}
+
+    debugPrint("refresh done");
+  }
+
+  final GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
+
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
 
     return Scaffold(
+      key: _drawerKey,
+      drawer: const SizedBox(
+        child: DrawerMenu(),
+      ),
+      appBar: !Responsive.isDesktop(context)
+          ? AppBar(
+              elevation: 0,
+              backgroundColor: AppColors.white,
+              leading: IconButton(
+                onPressed: () {
+                  _drawerKey.currentState?.openDrawer();
+                },
+                icon: const Icon(
+                  Icons.menu,
+                  color: AppColors.txtColor,
+                ),
+              ),
+              actions: const [
+                AppBarActionItems(),
+              ],
+            )
+          : const PreferredSize(
+              preferredSize: Size.zero,
+              child: SizedBox(),
+            ),
       body: SafeArea(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Expanded(
-              flex: 1,
-              child: SideMenu(),
-            ),
+            if (Responsive.isDesktop(context))
+              const Expanded(
+                flex: 1,
+                child: DrawerMenu(),
+              ),
             Expanded(
               flex: 10,
               child: SafeArea(
@@ -165,31 +208,35 @@ class _DashboardState extends State<Dashboard> {
                       SizedBox(
                         height: SizeConfig.blockSizeVertical! * 3,
                       ),
+                      const HistoryTable(),
+                      if (!Responsive.isDesktop(context))
+                        const PaymentDetailsList(),
                     ],
                   ),
                 ),
               ),
             ),
-            Expanded(
-              flex: 4,
-              child: Container(
-                width: double.infinity,
-                height: SizeConfig.screenHeight,
-                color: AppColors.secondaryBg,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 30.0,
-                  horizontal: 30.0,
-                ),
-                child: const SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      AppBarActionItems(),
-                      PaymentDetailsList(),
-                    ],
+            if (Responsive.isDesktop(context))
+              Expanded(
+                flex: 4,
+                child: Container(
+                  width: double.infinity,
+                  height: SizeConfig.screenHeight,
+                  color: AppColors.secondaryBg,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 30.0,
+                    horizontal: 30.0,
+                  ),
+                  child: const SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        AppBarActionItems(),
+                        PaymentDetailsList(),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
           ],
         ),
       ),

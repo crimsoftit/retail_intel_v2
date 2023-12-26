@@ -27,7 +27,7 @@ class _PaymentDetailsListState extends State<PaymentDetailsList> {
             borderRadius: BorderRadius.circular(30.0),
             boxShadow: const [
               BoxShadow(
-                color: AppColors.iconGray,
+                color: AppColors.iconColors,
                 blurRadius: 15.0,
                 offset: Offset(10.0, 15.0),
               ),

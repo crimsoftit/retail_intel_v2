@@ -27,13 +27,13 @@ class _InfoCardState extends State<InfoCard> {
   Widget build(BuildContext context) {
     return Container(
       constraints: const BoxConstraints(
-        minWidth: 180.0,
+        minWidth: 140.0,
       ),
       padding: const EdgeInsets.only(
         top: 20.0,
-        left: 20.0,
-        bottom: 20.0,
-        right: 20.0,
+        left: 5.0,
+        bottom: 5.0,
+        right: 5.0,
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
@@ -44,7 +44,7 @@ class _InfoCardState extends State<InfoCard> {
         children: [
           SvgPicture.asset(
             widget.icon!,
-            width: 35.0,
+            width: 25.0,
           ),
           SizedBox(
             height: SizeConfig.blockSizeVertical! * 2,

@@ -40,7 +40,7 @@ class _AppBarActionItemsState extends State<AppBarActionItems> {
             ),
             Icon(
               Icons.arrow_drop_down_outlined,
-              color: AppColors.black,
+              color: AppColors.txtColor,
             ),
           ],
         ),
