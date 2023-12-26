@@ -114,7 +114,7 @@ class _SoldItemsScreenState extends State<SoldItemsScreen> {
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const PrimaryText(
               text: 'Sell item...',
@@ -471,8 +471,45 @@ class _SoldItemsScreenState extends State<SoldItemsScreen> {
                                 color: Colors.red[300],
                               ),
                               onTap: () {
-                                _deleteSoldItem(
-                                    _soldItemsList[index]['productCode']);
+                                showDialog<String>(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog.adaptive(
+                                    title: const PrimaryText(
+                                      text: "Delete Item!",
+                                    ),
+                                    content: PrimaryText(
+                                      text:
+                                          "Delete ${_soldItemsList[index]['name']}?",
+                                      size: 16,
+                                    ),
+                                    actions: <Widget>[
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          refreshSoldItemsList();
+                                          refreshInventoryList();
+                                          Navigator.pop(context, 'Cancel');
+                                        },
+                                        child: const PrimaryText(
+                                          text: 'Cancel',
+                                          size: 16,
+                                        ),
+                                      ),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          _deleteSoldItem(_soldItemsList[index]
+                                              ['productCode']);
+
+                                          Navigator.pop(context, 'DELETE');
+                                        },
+                                        child: const PrimaryText(
+                                          text: 'DELETE',
+                                          color: Colors.redAccent,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
                               },
                             ),
                             onTap: () {
