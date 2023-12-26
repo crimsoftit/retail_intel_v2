@@ -22,22 +22,22 @@ class _PaymentDetailsListState extends State<PaymentDetailsList> {
         SizedBox(
           height: SizeConfig.blockSizeVertical! * 5,
         ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30.0),
-            boxShadow: const [
-              BoxShadow(
-                color: AppColors.iconColors,
-                blurRadius: 15.0,
-                offset: Offset(10.0, 15.0),
-              ),
-            ],
-          ),
-          child: Image.asset('assets/images/card.png'),
-        ),
-        SizedBox(
-          height: SizeConfig.blockSizeVertical! * 5,
-        ),
+        // Container(
+        //   decoration: BoxDecoration(
+        //     borderRadius: BorderRadius.circular(30.0),
+        //     boxShadow: const [
+        //       BoxShadow(
+        //         color: AppColors.iconColors,
+        //         blurRadius: 15.0,
+        //         offset: Offset(10.0, 15.0),
+        //       ),
+        //     ],
+        //   ),
+        //   child: Image.asset('assets/images/card.png'),
+        // ),
+        // SizedBox(
+        //   height: SizeConfig.blockSizeVertical! * 5,
+        // ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

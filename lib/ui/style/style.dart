@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:retail_intel_v2/ui/style/colors.dart';
 
-
 class PrimaryText extends StatelessWidget {
   final double size;
   final FontWeight fontWeight;
+  final FontStyle fontStyle;
   final Color color;
   final String text;
   final double height;
 
-  const PrimaryText({super.key, 
+  const PrimaryText({
+    super.key,
     required this.text,
     this.fontWeight = FontWeight.w400,
+    this.fontStyle = FontStyle.italic,
     this.color = AppColors.primary,
     this.size = 20,
     this.height = 1.3,
@@ -19,13 +21,15 @@ class PrimaryText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(text,
-        style: TextStyle(
-          color: color,
-          height: height,
-          fontFamily: 'Poppins',
-          fontSize: size,
-          fontWeight: fontWeight,
-        ),);
+    return Text(
+      text,
+      style: TextStyle(
+        color: color,
+        height: height,
+        fontFamily: 'Poppins',
+        fontSize: size,
+        fontWeight: fontWeight,
+      ),
+    );
   }
 }

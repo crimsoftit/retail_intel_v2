@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
+import 'package:retail_intel_v2/constants/constants.dart';
 import 'package:retail_intel_v2/ui/components/appbar_action_items.dart';
 import 'package:retail_intel_v2/ui/components/bar_chart_component.dart';
 import 'package:retail_intel_v2/ui/components/drawer_menu.dart';
@@ -25,6 +26,7 @@ import 'package:retail_intel_v2/ui/config/responsive.dart';
 import 'package:retail_intel_v2/ui/config/size_config.dart';
 import 'package:retail_intel_v2/ui/style/colors.dart';
 import 'package:retail_intel_v2/ui/style/style.dart';
+import 'package:retail_intel_v2/utils/sql_helper.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -38,6 +40,8 @@ class _DashboardState extends State<Dashboard> {
   void initState() {
     super.initState();
     _stateUpdate();
+    calculateInventoryValue();
+    calculateTotalSales();
   }
 
   void _stateUpdate() {
@@ -46,7 +50,43 @@ class _DashboardState extends State<Dashboard> {
     debugPrint("refresh done");
   }
 
+  num totalInvValue = 0;
+  num totalSales = 0;
+
+  // all inventory items in the database
+  List inventoryList = [];
+
+  // all sold item entries in the database
+  List soldItems = [];
+
   final GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
+  final TextEditingController _searchController = TextEditingController();
+
+  // get total inventory value from the database
+  void calculateInventoryValue() async {
+    inventoryList = await SQLHelper.fetchAllInventory();
+    for (var element in inventoryList) {
+      totalInvValue = (totalInvValue) + element['buyingPrice'];
+    }
+
+    setState(() {
+      inventoryList = inventoryList;
+      totalInvValue = totalInvValue.toInt();
+    });
+  }
+
+  // get total sales value from the database
+  void calculateTotalSales() async {
+    soldItems = await SQLHelper.fetchSoldItems();
+    for (var soldItem in soldItems) {
+      totalSales = (totalSales) + soldItem['total_price'];
+    }
+
+    setState(() {
+      soldItems = soldItems;
+      totalSales = totalSales.toInt();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,18 +100,67 @@ class _DashboardState extends State<Dashboard> {
       appBar: !Responsive.isDesktop(context)
           ? AppBar(
               elevation: 0,
-              backgroundColor: AppColors.white,
+              foregroundColor: Colors.brown[100],
+              flexibleSpace: Container(
+                decoration: BoxDecoration(
+                  color: Colors.brown[100],
+                  gradient: LinearGradient(
+                    colors: [Colors.brown, Colors.brown.shade300],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+              ),
               leading: IconButton(
                 onPressed: () {
                   _drawerKey.currentState?.openDrawer();
                 },
                 icon: const Icon(
                   Icons.menu,
-                  color: AppColors.txtColor,
+                  color: AppColors.white,
                 ),
               ),
-              actions: const [
-                AppBarActionItems(),
+              // search field
+              title: TextField(
+                controller: _searchController,
+                style: const TextStyle(color: Colors.white),
+                cursorColor: Colors.white,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(3),
+                  hintText: 'Search...',
+                  hintStyle: const TextStyle(color: Colors.white54),
+                  border: const OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: const BorderSide(color: AppColors.white),
+                  ),
+                  prefixIcon: const Icon(
+                    Icons.search,
+                    color: Colors.white54,
+                    size: 20,
+                  ),
+                ),
+                onChanged: (value) {
+                  // Perform search functionality here
+                },
+              ),
+              actions: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.notifications_on,
+                    size: 19,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.more_vert,
+                    size: 19,
+                  ),
+                ),
               ],
             )
           : const PreferredSize(
@@ -92,15 +181,15 @@ class _DashboardState extends State<Dashboard> {
               child: SafeArea(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.symmetric(
-                    vertical: 30.0,
+                    vertical: 10.0,
                     horizontal: 30.0,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Header(),
-                      SizedBox(
-                        height: SizeConfig.screenHeight! / 14,
+                      const SizedBox(
+                        height: 15.0,
                       ),
                       SizedBox(
                         width: SizeConfig.screenWidth,
@@ -110,18 +199,18 @@ class _DashboardState extends State<Dashboard> {
                           alignment: WrapAlignment.spaceBetween,
                           children: [
                             InfoCard(
-                              icon: 'assets/icons/credit-card.svg',
-                              label: 'transfer via \n card number',
-                              amount: '\$1200',
+                              icon: 'assets/icons/inventory.svg',
+                              label: 'Inventory value',
+                              amount: currencyFormat.format(totalInvValue),
                               btn: TextButton(
                                 onPressed: () {},
                                 child: const PrimaryText(text: 'more details'),
                               ),
                             ),
                             InfoCard(
-                              icon: 'assets/icons/transfer.svg',
-                              label: 'transfer via \n online banks',
-                              amount: '\$150',
+                              icon: 'assets/icons/sales_1.svg',
+                              label: 'Total sales',
+                              amount: currencyFormat.format(totalSales),
                               btn: TextButton(
                                 onPressed: () {},
                                 child: const PrimaryText(text: 'more details'),

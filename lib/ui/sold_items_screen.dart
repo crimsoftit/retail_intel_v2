@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:retail_intel_v2/constants/constants.dart';
 import 'package:retail_intel_v2/ui/dashboard.dart';
+import 'package:retail_intel_v2/ui/style/colors.dart';
+import 'package:retail_intel_v2/ui/style/style.dart';
 import 'package:retail_intel_v2/utils/sql_helper.dart';
 
 class SoldItemsScreen extends StatefulWidget {
@@ -114,6 +116,16 @@ class _SoldItemsScreenState extends State<SoldItemsScreen> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
+            const PrimaryText(
+              text: 'Sell item...',
+              size: 20,
+              fontWeight: FontWeight.w500,
+            ),
+
+            const SizedBox(
+              height: 10.0,
+            ),
+
             // form to handle input data
             Form(
               key: formKey,
@@ -281,6 +293,9 @@ class _SoldItemsScreenState extends State<SoldItemsScreen> {
                       ],
                     ),
                   ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
                   ElevatedButton(
                     onPressed: () async {
                       // validator returns true if the form is valid, or false otherwise.
@@ -387,9 +402,14 @@ class _SoldItemsScreenState extends State<SoldItemsScreen> {
                           showDialog<String>(
                             context: context,
                             builder: (BuildContext context) => AlertDialog(
-                              title: const Text("Delete Item?"),
-                              content: Text(
-                                  "Delete ${_soldItemsList[index]['name']}?"),
+                              title: const PrimaryText(
+                                text: "Delete Item!",
+                              ),
+                              content: PrimaryText(
+                                text:
+                                    "Delete ${_soldItemsList[index]['name']}?",
+                                size: 16,
+                              ),
                               actions: <Widget>[
                                 ElevatedButton(
                                   onPressed: () {
@@ -397,7 +417,10 @@ class _SoldItemsScreenState extends State<SoldItemsScreen> {
                                     refreshInventoryList();
                                     Navigator.pop(context, 'Cancel');
                                   },
-                                  child: const Text('Cancel'),
+                                  child: const PrimaryText(
+                                    text: 'Cancel',
+                                    size: 16,
+                                  ),
                                 ),
                                 ElevatedButton(
                                   onPressed: () {
@@ -407,7 +430,10 @@ class _SoldItemsScreenState extends State<SoldItemsScreen> {
                                     refreshInventoryList();
                                     Navigator.pop(context, 'Delete');
                                   },
-                                  child: const Text('Delete'),
+                                  child: const PrimaryText(
+                                    text: 'DELETE',
+                                    color: Colors.redAccent,
+                                  ),
                                 ),
                               ],
                             ),
@@ -417,14 +443,27 @@ class _SoldItemsScreenState extends State<SoldItemsScreen> {
                           color: Colors.white,
                           elevation: 1.0,
                           child: ListTile(
-                            title: Text((_soldItemsList[index]['name'])),
-                            subtitle: Text(
-                                "qty:${_soldItemsList[index]['quantity'].toString()} code: ${_soldItemsList[index]['productCode']} price: ${_soldItemsList[index]['price'].toString()} Modified: ${_soldItemsList[index]['date']}"),
+                            title: PrimaryText(
+                              text: (_soldItemsList[index]['name']),
+                              size: 16,
+                              color: AppColors.brown,
+                            ),
+                            subtitle: PrimaryText(
+                              text:
+                                  "qty:${_soldItemsList[index]['quantity']}  code:${_soldItemsList[index]['productCode']}   price: ${currencyFormat.format(_soldItemsList[index]['price'])}   Modified: ${_soldItemsList[index]['date']}",
+                              size: 14,
+                              color: AppColors.secondary,
+                              fontStyle: FontStyle.italic,
+                            ),
                             leading: CircleAvatar(
                               backgroundColor: Colors.brown[300],
                               foregroundColor: Colors.white,
-                              child: Text(_soldItemsList[index]['name'][0]
-                                  .toUpperCase()),
+                              child: PrimaryText(
+                                text: _soldItemsList[index]['name'][0]
+                                    .toUpperCase(),
+                                size: 16,
+                                color: Colors.white,
+                              ),
                             ),
                             trailing: GestureDetector(
                               child: Icon(

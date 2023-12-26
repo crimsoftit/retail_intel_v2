@@ -15,7 +15,7 @@ final currencyFormat = NumberFormat.currency(
     locale: Platform.localeName,
     customPattern: '\u00a4#,### ',
     symbol: 'Ksh',
-    decimalDigits: 1);
+    decimalDigits: 0);
 
 // Default App Padding
 const appPadding = 10.0;

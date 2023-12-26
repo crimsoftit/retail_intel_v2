@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const white = Colors.white;
+  static const brown = Colors.brown;
   static const secondary = Color(0xffa6a6a6);
   static const iconColors = Color.fromARGB(56, 72, 54, 8);
   static const txtColor = Color.fromARGB(56, 72, 54, 8);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:retail_intel_v2/constants/constants.dart';
 import 'package:retail_intel_v2/ui/config/size_config.dart';
 import 'package:retail_intel_v2/ui/style/colors.dart';
 import 'package:retail_intel_v2/ui/style/style.dart';
@@ -45,13 +46,14 @@ class _InfoCardState extends State<InfoCard> {
           SvgPicture.asset(
             widget.icon!,
             width: 25.0,
+            color: iconColor,
           ),
           SizedBox(
             height: SizeConfig.blockSizeVertical! * 2,
           ),
           PrimaryText(
             text: widget.label!,
-            color: AppColors.secondary,
+            color: AppColors.txtColor,
             size: 16.0,
           ),
           SizedBox(
@@ -61,6 +63,7 @@ class _InfoCardState extends State<InfoCard> {
             text: widget.amount!,
             fontWeight: FontWeight.w700,
             size: 18.0,
+            color: Colors.brown,
           ),
           SizedBox(
             height: SizeConfig.blockSizeVertical! * 2,

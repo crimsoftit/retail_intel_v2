@@ -84,7 +84,7 @@ class _BarChartComponentState extends State<BarChartComponent> {
             BarChartGroupData(x: 0, barRods: [
               BarChartRodData(
                   y: 10,
-                  colors: [Colors.black],
+                  colors: [Colors.brown],
                   borderRadius: BorderRadius.circular(0),
                   width: Responsive.isDesktop(context) ? 40 : 10,
                   backDrawRodData: BackgroundBarChartRodData(
@@ -93,7 +93,7 @@ class _BarChartComponentState extends State<BarChartComponent> {
             BarChartGroupData(x: 1, barRods: [
               BarChartRodData(
                   y: 50,
-                  colors: [Colors.black],
+                  colors: [Colors.brown],
                   borderRadius: BorderRadius.circular(0),
                   width: Responsive.isDesktop(context) ? 40 : 10,
                   backDrawRodData: BackgroundBarChartRodData(
@@ -102,7 +102,7 @@ class _BarChartComponentState extends State<BarChartComponent> {
             BarChartGroupData(x: 2, barRods: [
               BarChartRodData(
                   y: 30,
-                  colors: [Colors.black],
+                  colors: [Colors.brown],
                   borderRadius: BorderRadius.circular(0),
                   width: Responsive.isDesktop(context) ? 40 : 10,
                   backDrawRodData: BackgroundBarChartRodData(
@@ -111,7 +111,7 @@ class _BarChartComponentState extends State<BarChartComponent> {
             BarChartGroupData(x: 3, barRods: [
               BarChartRodData(
                   y: 80,
-                  colors: [Colors.black],
+                  colors: [Colors.brown],
                   borderRadius: BorderRadius.circular(0),
                   width: Responsive.isDesktop(context) ? 40 : 10,
                   backDrawRodData: BackgroundBarChartRodData(
@@ -120,7 +120,7 @@ class _BarChartComponentState extends State<BarChartComponent> {
             BarChartGroupData(x: 4, barRods: [
               BarChartRodData(
                   y: 70,
-                  colors: [Colors.black],
+                  colors: [Colors.brown],
                   borderRadius: BorderRadius.circular(0),
                   width: Responsive.isDesktop(context) ? 40 : 10,
                   backDrawRodData: BackgroundBarChartRodData(
@@ -129,7 +129,7 @@ class _BarChartComponentState extends State<BarChartComponent> {
             BarChartGroupData(x: 5, barRods: [
               BarChartRodData(
                   y: 20,
-                  colors: [Colors.black],
+                  colors: [Colors.brown],
                   borderRadius: BorderRadius.circular(0),
                   width: Responsive.isDesktop(context) ? 40 : 10,
                   backDrawRodData: BackgroundBarChartRodData(
@@ -138,7 +138,7 @@ class _BarChartComponentState extends State<BarChartComponent> {
             BarChartGroupData(x: 6, barRods: [
               BarChartRodData(
                   y: 90,
-                  colors: [Colors.black],
+                  colors: [Colors.brown],
                   borderRadius: BorderRadius.circular(0),
                   width: Responsive.isDesktop(context) ? 40 : 10,
                   backDrawRodData: BackgroundBarChartRodData(
@@ -147,7 +147,7 @@ class _BarChartComponentState extends State<BarChartComponent> {
             BarChartGroupData(x: 7, barRods: [
               BarChartRodData(
                   y: 60,
-                  colors: [Colors.black],
+                  colors: [Colors.brown],
                   borderRadius: BorderRadius.circular(0),
                   width: Responsive.isDesktop(context) ? 40 : 10,
                   backDrawRodData: BackgroundBarChartRodData(
@@ -156,7 +156,7 @@ class _BarChartComponentState extends State<BarChartComponent> {
             BarChartGroupData(x: 8, barRods: [
               BarChartRodData(
                   y: 90,
-                  colors: [Colors.black],
+                  colors: [Colors.brown],
                   borderRadius: BorderRadius.circular(0),
                   width: Responsive.isDesktop(context) ? 40 : 10,
                   backDrawRodData: BackgroundBarChartRodData(
@@ -165,7 +165,7 @@ class _BarChartComponentState extends State<BarChartComponent> {
             BarChartGroupData(x: 9, barRods: [
               BarChartRodData(
                   y: 10,
-                  colors: [Colors.black],
+                  colors: [Colors.brown],
                   borderRadius: BorderRadius.circular(0),
                   width: Responsive.isDesktop(context) ? 40 : 10,
                   backDrawRodData: BackgroundBarChartRodData(
@@ -174,7 +174,7 @@ class _BarChartComponentState extends State<BarChartComponent> {
             BarChartGroupData(x: 10, barRods: [
               BarChartRodData(
                   y: 40,
-                  colors: [Colors.black],
+                  colors: [Colors.brown],
                   borderRadius: BorderRadius.circular(0),
                   width: Responsive.isDesktop(context) ? 40 : 10,
                   backDrawRodData: BackgroundBarChartRodData(
@@ -183,7 +183,7 @@ class _BarChartComponentState extends State<BarChartComponent> {
             BarChartGroupData(x: 11, barRods: [
               BarChartRodData(
                   y: 80,
-                  colors: [Colors.black],
+                  colors: [Colors.brown],
                   borderRadius: BorderRadius.circular(0),
                   width: Responsive.isDesktop(context) ? 40 : 10,
                   backDrawRodData: BackgroundBarChartRodData(

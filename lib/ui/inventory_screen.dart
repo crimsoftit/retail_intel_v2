@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:retail_intel_v2/constants/constants.dart';
 import 'package:retail_intel_v2/ui/dashboard.dart';
+import 'package:retail_intel_v2/ui/style/colors.dart';
+import 'package:retail_intel_v2/ui/style/style.dart';
 import 'package:retail_intel_v2/utils/sql_helper.dart';
 import 'package:flutter/material.dart';
 
@@ -87,8 +89,18 @@ class _InventoryScreenState extends State<InventoryScreen> {
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            const PrimaryText(
+              text: 'Add inventory item...',
+              size: 20,
+              fontWeight: FontWeight.w500,
+            ),
+
+            const SizedBox(
+              height: 10.0,
+            ),
+
             // form to handle input data
             Form(
               key: formKey,
@@ -194,6 +206,9 @@ class _InventoryScreenState extends State<InventoryScreen> {
                       return null;
                     },
                   ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
                   ElevatedButton(
                     onPressed: () async {
                       // validator returns true if the form is valid, or false otherwise.
@@ -218,8 +233,9 @@ class _InventoryScreenState extends State<InventoryScreen> {
                         Navigator.of(context).pop();
                       }
                     },
-                    child: Text(
-                        pCode == null ? 'add new entry..' : 'update entry...'),
+                    child: Text(pCode == null
+                        ? 'add inventory..'
+                        : 'update inventory...'),
                   ),
                 ],
               ),
@@ -331,16 +347,24 @@ class _InventoryScreenState extends State<InventoryScreen> {
                             context: context,
                             builder: (BuildContext context) =>
                                 AlertDialog.adaptive(
-                              title: const Text("Delete Item!"),
-                              content: Text(
-                                  "Delete ${_inventoryList[index]['name']}?"),
+                              title: const PrimaryText(
+                                text: "Delete Item!",
+                              ),
+                              content: PrimaryText(
+                                text:
+                                    "Delete ${_inventoryList[index]['name']}?",
+                                size: 16,
+                              ),
                               actions: <Widget>[
                                 ElevatedButton(
                                   onPressed: () {
                                     refreshInventoryList();
                                     Navigator.pop(context, 'Cancel');
                                   },
-                                  child: const Text('Cancel'),
+                                  child: const PrimaryText(
+                                    text: 'Cancel',
+                                    size: 16,
+                                  ),
                                 ),
                                 ElevatedButton(
                                   onPressed: () {
@@ -350,7 +374,10 @@ class _InventoryScreenState extends State<InventoryScreen> {
                                     refreshInventoryList();
                                     Navigator.pop(context, 'DELETE');
                                   },
-                                  child: const Text('DELETE'),
+                                  child: const PrimaryText(
+                                    text: 'DELETE',
+                                    color: Colors.redAccent,
+                                  ),
                                 ),
                               ],
                             ),
@@ -360,14 +387,28 @@ class _InventoryScreenState extends State<InventoryScreen> {
                           color: Colors.white,
                           elevation: 1.0,
                           child: ListTile(
-                            title: Text((_inventoryList[index]['name'])),
-                            subtitle: Text(
-                                "qty:${_inventoryList[index]['quantity'].toString()} BP:${_inventoryList[index]['buyingPrice'].toString()} SP: ${_inventoryList[index]['unitSellingPrice'].toString()} Modified: ${_inventoryList[index]['createdAt']}"),
+                            title: PrimaryText(
+                              text: (_inventoryList[index]['name']),
+                              size: 16,
+                              color: AppColors.brown,
+                            ),
+                            subtitle: PrimaryText(
+                              text:
+                                  "qty:${_inventoryList[index]['quantity']}  BP:${currencyFormat.format(_inventoryList[index]['buyingPrice'])}  SP: ${currencyFormat.format(_inventoryList[index]['unitSellingPrice'])}  Modified: ${_inventoryList[index]['createdAt']}",
+                              size: 14,
+                              color: AppColors.secondary,
+                              fontStyle: FontStyle.italic,
+                            ),
                             leading: CircleAvatar(
                               backgroundColor: Colors.brown[300],
-                              foregroundColor: Colors.white,
-                              child: Text(_inventoryList[index]['name'][0]
-                                  .toUpperCase()),
+                              foregroundColor:
+                                  const Color.fromRGBO(255, 255, 255, 1),
+                              child: PrimaryText(
+                                text: _inventoryList[index]['name'][0]
+                                    .toUpperCase(),
+                                size: 16,
+                                color: Colors.white,
+                              ),
                             ),
                             trailing: GestureDetector(
                               child: Icon(
@@ -375,8 +416,46 @@ class _InventoryScreenState extends State<InventoryScreen> {
                                 color: Colors.red[300],
                               ),
                               onTap: () {
-                                _deleteInventoryItem(
-                                    _inventoryList[index]['productCode']);
+                                showDialog<String>(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog.adaptive(
+                                    title: const PrimaryText(
+                                      text: "Delete Item!",
+                                    ),
+                                    content: PrimaryText(
+                                      text:
+                                          "Delete ${_inventoryList[index]['name']}?",
+                                      size: 16,
+                                    ),
+                                    actions: <Widget>[
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          refreshInventoryList();
+                                          Navigator.pop(context, 'Cancel');
+                                        },
+                                        child: const PrimaryText(
+                                          text: 'Cancel',
+                                          size: 16,
+                                        ),
+                                      ),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          _deleteInventoryItem(
+                                              _inventoryList[index]
+                                                  ['productCode']);
+
+                                          refreshInventoryList();
+                                          Navigator.pop(context, 'DELETE');
+                                        },
+                                        child: const PrimaryText(
+                                          text: 'DELETE',
+                                          color: Colors.redAccent,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
                               },
                             ),
                             onTap: () {
