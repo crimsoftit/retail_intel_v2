@@ -27,7 +27,7 @@ class _InfoCardState extends State<InfoCard> {
   Widget build(BuildContext context) {
     return Container(
       constraints: const BoxConstraints(
-        minWidth: 200.0,
+        minWidth: 180.0,
       ),
       padding: const EdgeInsets.only(
         top: 20.0,

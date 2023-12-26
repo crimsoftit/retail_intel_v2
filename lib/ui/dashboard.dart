@@ -14,6 +14,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:retail_intel_v2/ui/components/appbar_action_items.dart';
+import 'package:retail_intel_v2/ui/components/bar_chart_component.dart';
 import 'package:retail_intel_v2/ui/components/header.dart';
 import 'package:retail_intel_v2/ui/components/info_card.dart';
 import 'package:retail_intel_v2/ui/components/payment_details_list.dart';
@@ -108,16 +109,61 @@ class _DashboardState extends State<Dashboard> {
                         height: SizeConfig.blockSizeVertical! * 4,
                       ),
                       const Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
+                          Column(
+                            children: [
+                              PrimaryText(
+                                text: 'Balance',
+                                size: 16,
+                                fontWeight: FontWeight.w800,
+                                color: AppColors.secondary,
+                              ),
+                              PrimaryText(
+                                text: '\$1500',
+                                size: 30,
+                                fontWeight: FontWeight.w800,
+                                color: AppColors.secondary,
+                              ),
+                            ],
+                          ),
                           PrimaryText(
-                            text: 'Balance',
+                            text: 'Past 30 days',
+                            size: 16,
+                            color: AppColors.secondary,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: SizeConfig.blockSizeVertical! * 3,
+                      ),
+                      const SizedBox(
+                        height: 180,
+                        child: BarChartComponent(),
+                      ),
+                      SizedBox(
+                        height: SizeConfig.blockSizeVertical! * 5,
+                      ),
+                      const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          PrimaryText(
+                            text: 'History',
+                            size: 30,
+                            fontWeight: FontWeight.w800,
+                            color: AppColors.secondary,
+                          ),
+                          PrimaryText(
+                            text: "Last 6 months' transactions",
                             size: 16,
                             fontWeight: FontWeight.w800,
                             color: AppColors.secondary,
                           ),
                         ],
+                      ),
+                      SizedBox(
+                        height: SizeConfig.blockSizeVertical! * 3,
                       ),
                     ],
                   ),
