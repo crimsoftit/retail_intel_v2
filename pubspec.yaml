@@ -38,6 +38,7 @@ dependencies:
 
   # database storage
   sqflite: any
+  sqflite_common_ffi: any
   
   # format DateTime
   intl: ^0.17.0
@@ -53,6 +54,9 @@ dependencies:
   provider: ^5.0.0
   data_table_2: ^2.0.3
   clock: ^1.1.1
+  firebase_core: ^2.24.2
+
+  
 
   
 dev_dependencies:

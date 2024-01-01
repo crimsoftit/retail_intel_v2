@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "861463450216",
+    "project_id": "retail-intel-d4a44",
+    "storage_bucket": "retail-intel-d4a44.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861463450216:android:df1d63a5a74b43110a21dd",
+        "android_client_info": {
+          "package_name": "com.example.retail_intel_v2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaQ7hmd6tznnqimm--bviMfZcyWcNU1_Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
