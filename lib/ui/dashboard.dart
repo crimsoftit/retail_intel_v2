@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// ignore_for_file: unused_element
+
 import 'package:flutter/material.dart';
 import 'package:retail_intel_v2/constants/constants.dart';
 import 'package:retail_intel_v2/ui/components/appbar_action_items.dart';
@@ -126,7 +128,7 @@ class _DashboardState extends State<Dashboard> {
                 style: const TextStyle(color: Colors.white),
                 cursorColor: Colors.white,
                 decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(3),
+                  contentPadding: const EdgeInsets.all(3),
                   hintText: 'Search...',
                   hintStyle: const TextStyle(color: Colors.white54),
                   border: const OutlineInputBorder(
