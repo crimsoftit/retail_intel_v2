@@ -203,7 +203,7 @@ class _DashboardState extends State<Dashboard> {
                             InfoCard(
                               icon: 'assets/icons/inventory.svg',
                               label: 'Inventory value',
-                              amount: currencyFormat.format(totalInvValue),
+                              amount: totalInvValue.toString(),
                               btn: TextButton(
                                 onPressed: () {},
                                 child: const PrimaryText(text: 'more details'),
@@ -212,7 +212,7 @@ class _DashboardState extends State<Dashboard> {
                             InfoCard(
                               icon: 'assets/icons/sales_1.svg',
                               label: 'Total sales',
-                              amount: currencyFormat.format(totalSales),
+                              amount: totalSales.toString(),
                               btn: TextButton(
                                 onPressed: () {},
                                 child: const PrimaryText(text: 'more details'),

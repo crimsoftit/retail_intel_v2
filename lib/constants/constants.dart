@@ -11,11 +11,11 @@ var currentDate = DateFormat('yyyy-MM-dd - kk:mm').format(clock.now());
 
 NumberFormat myFormat = NumberFormat.decimalPattern('en_us');
 
-final currencyFormat = NumberFormat.currency(
-    locale: Platform.localeName,
-    customPattern: '\u00a4#,### ',
-    symbol: 'Ksh',
-    decimalDigits: 0);
+// final currencyFormat = NumberFormat.currency(
+//     locale: Platform.localeName,
+//     customPattern: '\u00a4#,### ',
+//     symbol: 'Ksh',
+//     decimalDigits: 0);
 
 // Default App Padding
 const appPadding = 10.0;

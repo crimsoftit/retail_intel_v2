@@ -450,7 +450,7 @@ class _SoldItemsScreenState extends State<SoldItemsScreen> {
                             ),
                             subtitle: PrimaryText(
                               text:
-                                  "qty:${_soldItemsList[index]['quantity']}  code:${_soldItemsList[index]['productCode']}   price: ${currencyFormat.format(_soldItemsList[index]['price'])}   Modified: ${_soldItemsList[index]['date']}",
+                                  "qty:${_soldItemsList[index]['quantity']}  code:${_soldItemsList[index]['productCode']}   price: ${_soldItemsList[index]['price']}   Modified: ${_soldItemsList[index]['date']}",
                               size: 14,
                               color: AppColors.secondary,
                               fontStyle: FontStyle.italic,

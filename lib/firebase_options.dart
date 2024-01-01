@@ -67,6 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '861463450216',
     projectId: 'retail-intel-d4a44',
     storageBucket: 'retail-intel-d4a44.appspot.com',
+    androidClientId: '861463450216-voa2j47j61mr46r37oocvoia78st90rq.apps.googleusercontent.com',
+    iosClientId: '861463450216-grkgltl3fq171iprf2bv17ako2dfh92d.apps.googleusercontent.com',
     iosBundleId: 'com.example.retailIntelV2',
   );
 
@@ -76,6 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '861463450216',
     projectId: 'retail-intel-d4a44',
     storageBucket: 'retail-intel-d4a44.appspot.com',
+    androidClientId: '861463450216-voa2j47j61mr46r37oocvoia78st90rq.apps.googleusercontent.com',
+    iosClientId: '861463450216-fmcov5prse8judtg10iefmg1utgbiqga.apps.googleusercontent.com',
     iosBundleId: 'com.example.retailIntelV2.RunnerTests',
   );
 }

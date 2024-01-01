@@ -394,7 +394,7 @@ class _InventoryScreenState extends State<InventoryScreen> {
                             ),
                             subtitle: PrimaryText(
                               text:
-                                  "qty:${_inventoryList[index]['quantity']}  BP:${currencyFormat.format(_inventoryList[index]['buyingPrice'])}  SP: ${currencyFormat.format(_inventoryList[index]['unitSellingPrice'])}  Modified: ${_inventoryList[index]['createdAt']}",
+                                  "qty:${_inventoryList[index]['quantity']}  BP:${_inventoryList[index]['buyingPrice']}  SP: ${_inventoryList[index]['unitSellingPrice']}  Modified: ${_inventoryList[index]['createdAt']}",
                               size: 14,
                               color: AppColors.secondary,
                               fontStyle: FontStyle.italic,
