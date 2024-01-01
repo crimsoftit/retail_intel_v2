@@ -23,7 +23,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.example.retail_intel_v2"
+    namespace "com.crimsoft.retail_intel_v2"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
